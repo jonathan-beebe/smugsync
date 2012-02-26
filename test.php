@@ -48,13 +48,13 @@
 		*/
 
 		foreach($albums as $album) {
-			echo "\n" . get_class($album) . "\n";
-			var_export($album->toArray());
-			echo "\n\n";
+			//echo "\n" . get_class($album) . "\n";
+			//var_export($album->toArray());
+			//echo "\n\n";
 		}
 
-		//$images = $albums[0]->getImages();
-		//var_export($images);
+		$images = $albums[0]->getImages();
+		var_export($images);
 
 		exit;
 
