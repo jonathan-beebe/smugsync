@@ -5,6 +5,9 @@
  */
 class LocalCategory extends LocalBaseModel {
 	
+	/**
+	 * @return LocalAlbum
+	 */
 	public function getAlbums() {
 		$folders = $this->collectFolders();
 		return LocalAlbum::fromCollection($folders);

@@ -9,6 +9,9 @@ class LocalAccount extends LocalBaseModel {
 		return $this->Folder->getFilename();
 	}
 
+	/**
+	 * @return LocalCategory
+	 */
 	public function getCategories() {
 		// Categories are all 1st level folders.
 		$folders = $this->collectFolders();

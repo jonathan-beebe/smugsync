@@ -10,6 +10,9 @@ class LocalAlbum extends LocalBaseModel {
 		);
 	}
 
+	/**
+	 * @return LocalImage
+	 */
 	public function getImages() {
 		$mimetypes = $this->AllowedMimetypes;
 		$files = $this->collectFiles(function(SplFileInfo $info) use ($mimetypes) {

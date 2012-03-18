@@ -16,10 +16,10 @@ class LocalBaseModel extends CModel {
 	/**
 	 * Create an array of models given a collection of folders.
 	 * Useful for getting folders of folders as model objects.
-	 * @return array
+	 * @return ImageCollection
 	 */
 	static public function fromCollection(FolderCollection $collection) {
-		$array = array();
+		$array = new CList();
 		foreach($collection as $folder) {
 			$array[] = static::fromFileInfo($folder);
 		}
@@ -43,7 +43,7 @@ class LocalBaseModel extends CModel {
 	 * @return string
 	 */
 	public function getFolderPath() {
-		return $this->_basePath;
+		return realpath($this->_basePath);
 	}
 
 	/**
