@@ -4,7 +4,7 @@
  * A base class for all SmugMug api models.
  * Heavily influenced by Yii's CActiveRecord
  */
-abstract class SmugmugBaseModel extends CModel {
+abstract class SmugmugBaseModel extends BaseModel {
 
 	private $_account;
 
@@ -56,7 +56,7 @@ abstract class SmugmugBaseModel extends CModel {
 	 */
 	public function __get($name)
 	{
-		if(isset($this->_attributes[$name]))
+		if(array_key_exists($name, $this->_attributes))
 			return $this->_attributes[$name];
 		else
 			return parent::__get($name);
@@ -128,24 +128,4 @@ abstract class SmugmugBaseModel extends CModel {
 		}
 	}
 
-
-
-
-	private $memoized = array();
-
-	/**
-	 * Memoizer
-	 * 
-	 * @param string $property
-	 * @param callback $callback
-	 * @param boolean $force
-	 * @return multitype:
-	 */
-	public function getMemoized($property, $callback, $force = false)
-	{
-		if (!array_key_exists($property, $this->memoized) || $force == true) {
-			$this->memoized[$property] = call_user_func($callback, $this);
-		}
-		return $this->memoized[$property];
-	}	
 }
